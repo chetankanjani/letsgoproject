@@ -53,14 +53,14 @@ module.exports = function (passport) {
             passwordField: 'password',
             passReqToCallback: true
         },
-     
+
         function (req, username, password, done) {
             process.nextTick(function () {
                 User.findOne({'local.username': username}, function (err, user) {
                     if (err)
                         return done(err);
                     if (!user)
-                        return done(null, false, req.flash('loginMessage', 'No User found'));
+                        return done(null, false, req.flash('loginMessage', 'No Useasfar found'));
                     //if(!user.validPassword(password)){
                     //    return done(null, false, req.flash('loginMessage', 'invalid password'));
                     //}
