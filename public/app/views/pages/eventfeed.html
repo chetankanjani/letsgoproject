@@ -1,0 +1,434 @@
+<link rel="stylesheet" href="../../../../public/app/css/map.css"/>
+
+
+<!--<div ng-repeat="item in userdata[0]">-->
+<!--<li>{{item.name}}</li>-->
+<!--<li>{{item.location}}</li>-->
+<!--<li>{{item.price}}</li>-->
+<!--<li>{{item.rating}}-->
+
+<!--</div>-->
+
+<div>
+    <!--<div id="map"></div>-->
+    <!--<div id="class" ng-repeat="marker in markers | orderBy : 'title'">-->
+    <!--<a href="#" ng-click="openInfoWindow($event, marker)">{{marker.title}}</a>-->
+    <!--</div>-->
+</div>
+
+
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Eshop a Flat E-Commerce Bootstrap Responsive Website Template | Products :: w3layouts</title>
+    <link href="../../public/app/css/bootstrapweb.css" rel='stylesheet' type='text/css'/>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="../../public/app/js/jquery.min.js"></script>
+    <!-- Custom Theme files -->
+    <link href="../../public/app/css/styleweb.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="../../public/app/css/component.css" rel='stylesheet' type='text/css'/>
+    <!-- Custom Theme files -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="Eshop Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design"/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+    <!--webfont-->
+    <!-- for bootstrap working -->
+    <script type="text/javascript" src="../../public/app/js/bootstrap-3.1.1.min.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- cart -->
+    <script src="../../public/app/js/simpleCart.min.js"></script>
+    <!-- cart -->
+    <link rel="stylesheet" href="../../public/app/css/flexslider.css" type="text/css" media="screen"/>
+</head>
+<body background="../../public/app/css/images/header-bg.jpg">
+
+<!-- header-section-starts -->
+<div class="header">
+    <div class="header-top-strip">
+        <div class="container">
+            <div class="header-top-left">
+                <ul>
+                    <li><a href="account.html">LET'S GO</a></li>
+
+                </ul>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#home" class="page-scroll">Home</a></li>
+                    <li><a href="#services-section" class="page-scroll">Events</a></li>
+                    <li><a href="#about-section" class="page-scroll">About</a></li>
+                    <li><a href="#team-section" class="page-scroll">Team</a></li>
+
+                    <li><a href="#contact-section" class="page-scroll">Contact</a></li>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<!-- header-section-ends -->
+<div class="inner-banner">
+    <div class="container">
+        <div class="banner-top inner-head">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+
+                <!-- content-section-starts -->
+                <div class="container">
+                    <div class="products-page">
+                        <div class="products">
+
+
+                        </div>
+                        <div class="new-product">
+                            <div class="new-product-top">
+                                <ul class="product-top-list">
+                                    <li><a href="index.html">Home</a>&nbsp;<span>&gt;</span></li>
+                                    <li><span class="act">News Feed</span>&nbsp;</li>
+                                </ul>
+                                <p class="back"><a href="index.html">Back to Previous</a></p>
+
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="mens-toolbar">
+                                <div class="sort">
+                                    <div class="sort-by">
+                                        <label>Sort By</label>
+                                        <select>
+                                            <option value="">
+                                                Position
+                                            </option>
+                                            <option value="">
+                                                Name
+                                            </option>
+                                            <option value="">
+                                                Price
+                                            </option>
+                                        </select>
+                                        <a href=""><img src="../../public/app/images/arrow2.gif" alt=""
+                                                        class="v-middle"></a>
+                                    </div>
+                                </div>
+                                <ul class="women_pagenation">
+                                    <li>Page:</li>
+                                    <li class="active"><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
+                                <div class="cbp-vm-options">
+                                    <a href="#" class="cbp-vm-icon cbp-vm-grid cbp-vm-selected"
+                                       data-view="cbp-vm-view-grid" title="grid">Grid View</a>
+                                    <a href="#" class="cbp-vm-icon cbp-vm-list" data-view="cbp-vm-view-list"
+                                       title="list">List View</a>
+                                </div>
+                                <div class="pages">
+                                    <div class="limiter visible-desktop">
+                                        <label>Show</label>
+                                        <select>
+                                            <option value="" selected="selected">
+                                                9
+                                            </option>
+                                            <option value="">
+                                                15
+                                            </option>
+                                            <option value="">
+                                                30
+                                            </option>
+                                        </select> per page
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <ul>
+                                    <li>
+                                        <a class="cbp-vm-image" href="single.html">
+                                            <div class="simpleCart_shelfItem">
+                                                <div class="view view-first">
+                                                    <div class="inner_content clearfix">
+                                                        <div class="product_image">
+                                                            <img src="images/D9.jpg" class="img-responsive" alt=""/>
+
+                                                            <div class="mask">
+                                                                <div class="info">Quick View</div>
+                                                            </div>
+                                                            <div class="product_container">
+                                                                <div class="cart-left">
+                                                                    <p class="title">India Gate</p>
+                                                                </div>
+                                                                <div class="clearfix"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        </a>
+
+                                        <div class="cbp-vm-details">
+                                            The trip to India Gate is a must.
+                                        </div>
+                            </div>
+                            </li>
+                            <li>
+                                <a class="cbp-vm-image" href="single.html">
+                                    <div class="simpleCart_shelfItem">
+                                        <div class="view view-first">
+                                            <div class="inner_content clearfix">
+                                                <div class="product_image">
+                                                    <img src="images/k.jpg" class="img-responsive" alt=""/>
+
+                                                    <div class="mask">
+                                                        <div class="info">Quick View</div>
+                                                    </div>
+                                                    <div class="product_container">
+                                                        <div class="cart-left">
+                                                            <p class="title">Mini Palate festival</p>
+                                                        </div>
+
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </a>
+
+                                <div class="cbp-vm-details">
+                                    The food festival is going to be so amazing.
+                                </div>
+                        </div>
+                        </li>
+                        <li>
+                            <a class="cbp-vm-image" href="single.html">
+                                <div class="simpleCart_shelfItem">
+                                    <div class="view view-first">
+                                        <div class="inner_content clearfix">
+                                            <div class="product_image">
+                                                <img src="../../public/app/images/concert1.jpg" class="img-responsive"
+                                                     alt=""/>
+
+                                                <div class="mask">
+                                                    <div class="info">Quick View</div>
+                                                </div>
+                                                <div class="product_container">
+                                                    <div class="cart-left">
+                                                        <p class="title">Sunburn</p>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </a>
+
+                            <div class="cbp-vm-details">
+                                Sunburn music festival is going to happen sometime soon.
+                            </div>
+
+                    </div>
+                    </li>
+                    <li>
+                        <a class="cbp-vm-image" href="single.html">
+                            <div class="simpleCart_shelfItem">
+                                <div class="view view-first">
+                                    <div class="inner_content clearfix">
+                                        <div class="product_image">
+                                            <img src="../../public/app/images/D9.jpg" class="img-responsive" alt=""/>
+
+                                            <div class="mask">
+                                                <div class="info">Quick View</div>
+                                            </div>
+                                            <div class="product_container">
+                                                <div class="cart-left">
+                                                    <p class="title">India Gate</p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </a>
+
+                        <div class="cbp-vm-details">
+                            The trip to India Gate is a must.
+                        </div>
+                </div>
+                </li>
+                <li>
+                    <a class="cbp-vm-image" href="single.html">
+                        <div class="simpleCart_shelfItem">
+                            <div class="view view-first">
+                                <div class="inner_content clearfix">
+                                    <div class="product_image">
+                                        <img src="../../public/app/images/k.jpg" class="img-responsive" alt=""/>
+
+                                        <div class="mask">
+                                            <div class="info">Quick View</div>
+                                        </div>
+                                        <div class="product_container">
+                                            <div class="cart-left">
+                                                <p class="title">Mini Palate festival</p>
+                                            </div>
+
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </a>
+
+                    <div class="cbp-vm-details">
+                        The food festival is going to be so amazing.
+                    </div>
+
+        </div>
+        </li>
+        <li>
+            <a class="cbp-vm-image" href="single.html">
+                <div class="simpleCart_shelfItem">
+                    <div class="view view-first">
+                        <div class="inner_content clearfix">
+                            <div class="product_image">
+                                <img src="../../public/app/images/concert1.jpg" class="img-responsive" alt=""/>
+
+                                <div class="mask">
+                                    <div class="info">Quick View</div>
+                                </div>
+                                <div class="product_container">
+                                    <div class="cart-left">
+                                        <p class="title">Sunburn</p>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </a>
+
+            <div class="cbp-vm-details">
+                Sunburn music festival is going to happen sometime soon.
+            </div>
+        <li>
+            <a class="cbp-vm-image" href="single.html">
+                <div class="simpleCart_shelfItem">
+                    <div class="view view-first">
+                        <div class="inner_content clearfix">
+                            <div class="product_image">
+                                <img src="../../public/app/images/D9.jpg" class="img-responsive" alt=""/>
+
+                                <div class="mask">
+                                    <div class="info">Quick View</div>
+                                </div>
+                                <div class="product_container">
+                                    <div class="cart-left">
+                                        <p class="title">India Gate</p>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </a>
+
+            <div class="cbp-vm-details">
+                The trip to India Gate is a must.
+            </div>
+    </div>
+    </li>
+    <li>
+        <a class="cbp-vm-image" href="single.html">
+            <div class="simpleCart_shelfItem">
+                <div class="view view-first">
+                    <div class="inner_content clearfix">
+                        <div class="product_image">
+                            <img src="../../public/app/images/k.jpg" class="img-responsive" alt=""/>
+
+                            <div class="mask">
+                                <div class="info">Quick View</div>
+                            </div>
+                            <div class="product_container">
+                                <div class="cart-left">
+                                    <p class="title">Mini Palate festival</p>
+                                </div>
+
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </a>
+
+        <div class="cbp-vm-details">
+            The food festival is going to be so amazing.
+        </div>
+
+</div>
+</li>
+<li>
+    <a class="cbp-vm-image" href="single.html">
+        <div class="simpleCart_shelfItem">
+            <div class="view view-first">
+                <div class="inner_content clearfix">
+                    <div class="product_image">
+                        <img src="../../public/app/images/concert1.jpg" class="img-responsive" alt=""/>
+
+                        <div class="mask">
+                            <div class="info">Quick View</div>
+                        </div>
+                        <div class="product_container">
+                            <div class="cart-left">
+                                <p class="title">Sunburn</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </a>
+
+    <div class="cbp-vm-details">
+        Sunburn music festival is going to happen sometime soon.
+    </div>
+    </ul>
+    </div>
+    <script src="../../public/app/js/cbpViewModeSwitch.js" type="text/javascript"></script>
+    <script src="../../public/app/js/classie.js" type="text/javascript"></script>
+    </div>
+    <div class="clearfix"></div>
+    </div>
+    <div class="clearfix"></div>
+    </div>
+    <!-- content-section-ends -->
+
+    <div class="footer">
+
+        <div class="cards text-center">
+            <img src="../../public/app/images/cards.jpg" alt=""/>
+        </div>
+        <div class="copyright text-center">
+            <p>© 2015 Eshop. All Rights Reserved | Design by <a href="http://w3layouts.com"> W3layouts</a></p>
+        </div>
+    </div>
+    </div>
+</body>
+</html>
+
