@@ -91,6 +91,9 @@ userController.controller("EventController", ['$scope', '$rootScope', '$location
 
     $http.get("/api/eventfeed", {params: {userid: $localStorage.current_userid}}).success(function (data) {
 
+        // console.log('inside controller');
+        //console.log(data);
+        console.log(data[0].name);
         $scope.userdata = data;
 
     });

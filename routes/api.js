@@ -433,7 +433,7 @@ module.exports = function (app, express, passport) {
             if (err)
                 console.log(err);
             else {
-                array.push(event)
+                array.push(event);
 
                 resp(array);
 
@@ -457,7 +457,13 @@ module.exports = function (app, express, passport) {
 
 
                     var i;
+
+                    //if(users.favouriteid==null)
+                    console.log('inside second function inside get reues');
+                    console.log(users);
                     var length = users.favouriteid.length;
+                    //else
+                    //var length=0;
 
                     if (length > 0) {
                         for (i = 0; i < length; i++) {
@@ -501,6 +507,36 @@ module.exports = function (app, express, passport) {
 
         }
 
+    });
+    api.post('/email', function (req, res) {
+        //var nodemailer = require('nodemailer');
+        var transporter = nodemailer.createTransport("SMTP", {
+            service: 'Gmail',
+            auth: {
+                user: req.body.user,
+                pass: req.body.pass
+            }
+        }, {
+            // default values for sendMail method
+            from: req.body.from,
+            headers: {
+                'My-Awesome-Header': '123'
+            }
+
+        });
+        console.log("here we go");
+        transporter.sendMail({
+            to: 'neeti000@gmail.com',
+            subject: req.body.subject,
+            text: req.body.text
+        }, function (err, res) {
+            console.log("close");
+            if (err)
+                return err;
+            else
+                console.log("email sent");
+
+        });
     });
     api.post('/rateevent', function (req, res) {
 
@@ -675,8 +711,8 @@ module.exports = function (app, express, passport) {
         event.price = req.body.price;
 
         event.rating.value = req.body.rating;
-        event.image = req.body.image;
-        event.userimage = req.body.userimage;
+        event.imageurl = req.body.imageurl;
+        event.userimageurl = req.body.userimageurl;
         event.save(function (err) {
             if (err) {
                 if (err.code == 1100)
