@@ -332,12 +332,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <div ng-repeat="item in userdata[0]">
 
 
-                                <a class="cbp-vm-image" href="single.html">
+                                <a class="cbp-vm-image" href="" ng-click="openevent(item._id)" data={{item._id}}>
                 <div class="simpleCart_shelfItem">
                     <div class="view view-first">
                         <div class="inner_content clearfix">
                             <div class="product_image">
-                                <img ng-src="{{item.imageurl[0]}}" class="img-responsive" alt=""/>
+                                <img ng-src="{{item.imageurl[0]}}" ng-click="openevent(item._id)" data={{item._id}}
+                                     class="img-responsive" alt=""/>
 
                                 <!--<img src="http://www.ventus85.com/MyImages/lets-go.jpg" class="img-responsive" alt=""/>-->
 

@@ -49,7 +49,7 @@ myApp.config(['$routeProvider', function ($routeProvider) {
 
         when('/eventfeed', {
             templateUrl: '../../public/app/views/pages/eventfeed.html',
-            controller: 'EventController'
+            controller: 'EventfeedController'
         })
 
 }]);
@@ -83,15 +83,27 @@ myApp.config(['$routeProvider', function ($routeProvider) {
         })
 
 }]);
+
 myApp.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.
 
-        when('/events', {
-            templateUrl: '../../public/app/views/pages/eventfeed.html',
+        when('/profile', {
+            templateUrl: '../../public/app/views/pages/profile.html',
+            controller: 'ProfileController'
+        })
+
+}]);
+
+myApp.config(['$routeProvider', function ($routeProvider) {
+    $routeProvider.
+
+        when('/singleevent', {
+            templateUrl: '../../public/app/views/pages/event.html',
             controller: 'EventController'
         })
 
 }]);
+
 
 
 

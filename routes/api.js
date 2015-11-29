@@ -526,7 +526,7 @@ module.exports = function (app, express, passport) {
         });
         //console.log("here we go");
         transporter.sendMail({
-            to: 'chetan.kanjani@gmail.com',
+            to: 'letsgominor@gmail.com',
             subject: req.body.subject,
             text: req.body.text
         }, function (err, res) {

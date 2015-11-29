@@ -13,6 +13,6 @@ config.facebook = {
     appId: process.env.FACEBOOK_APPID || '1244317075594321',
     appSecret: process.env.FACEBOOK_APPSECRET || 'e3d8a1a5d37fbbf0bf0a6723d9fdad51',
     appNamespace: process.env.FACEBOOK_APPNAMESPACE || 'nodescrumptious',
-    redirectUrl: process.env.FACEBOOK_REDIRECTURI || 'http://localhost:8888/api/auth/facebook/callback'
+    redirectUrl: process.env.FACEBOOK_REDIRECTURI || 'http://localhost/api/auth/facebook/callback'
 };
 module.exports = config;

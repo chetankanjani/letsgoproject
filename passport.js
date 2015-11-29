@@ -74,7 +74,9 @@ module.exports = function (passport) {
     passport.use(new FacebookStrategy({
             clientID: config.facebook.appId,
             clientSecret: config.facebook.appSecret,
-            callbackURL: config.facebook.redirectUrl
+            callbackURL: config.facebook.redirectUrl,
+            enableProof: true
+
         },
         function (accessToken, refreshToken, profile, done) {
             process.nextTick(function () {
@@ -88,21 +90,22 @@ module.exports = function (passport) {
                     else {
                         var newUser = new User();
                         newUser.facebook.id = profile.id;
-                        newUser.facebook.token = accessToken;
-                        newUser.facebook.name = profile.name;
+                        //   newUser.facebook.token = accessToken;
+                        newUser.facebook.name = profile.displayName;
                         // newUser.facebook.email = profile.emails[0].value;
                         // console.log(accessToken);
                         console.log(newUser.facebook.id);
 
                         newUser.save(function (err) {
                             if (err)
-                                throw err;
+                                console.log(err);
                             return done(null, newUser);
                         })
                         console.log(profile);
                     }
                 });
             });
+            // done(null, profile);
         }
     ));
 

@@ -14,8 +14,17 @@ userController.controller("HomeController", ['$scope', '$http', '$localStorage',
 }]);
 
 
-userController.controller("LoginController", ['$scope', '$rootScope', '$location', '$http', '$localStorage', function ($scope, $rootScope, $location, $http, $localStorage) {
+userController.controller("EventController", ['$scope', '$rootScope', '$location', '$http', '$localStorage', function ($scope, $rootScope, $location, $http, $localStorage) {
 
+
+    $http.get("/api/getevent", {params: {eventid: $localStorage.onclickeventid}}).success(function (data) {
+
+        console.log('inside  event controller');
+        //console.log(data);
+        console.log(data);
+        $scope.data = data;
+
+    });
 
 }])
 
@@ -87,7 +96,7 @@ userController.controller("SignupController", ['$scope', '$rootScope', '$locatio
 }]);
 
 
-userController.controller("EventController", ['$scope', '$rootScope', '$location', '$http', '$localStorage', function ($scope, $rootScope, $location, $http, $localStorage) {
+userController.controller("EventfeedController", ['$scope', '$rootScope', '$location', '$http', '$localStorage', function ($scope, $rootScope, $location, $http, $localStorage) {
 
     $http.get("/api/eventfeed", {params: {userid: $localStorage.current_userid}}).success(function (data) {
 
@@ -97,6 +106,17 @@ userController.controller("EventController", ['$scope', '$rootScope', '$location
         $scope.userdata = data;
 
     });
+
+    $scope.openevent = function (data) {
+
+
+        console.log("open event");
+        console.log(data);
+
+        $localStorage.onclickeventid = data;
+        $location.path('/singleevent');
+
+    }
 
 
     $http.get("/api/getgeojson").success(function (data) {
