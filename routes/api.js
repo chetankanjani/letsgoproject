@@ -509,7 +509,7 @@ module.exports = function (app, express, passport) {
 
     });
     api.post('/email', function (req, res) {
-        //var nodemailer = require('nodemailer');
+        var nodemailer = require('nodemailer');
         var transporter = nodemailer.createTransport("SMTP", {
             service: 'Gmail',
             auth: {
@@ -524,15 +524,15 @@ module.exports = function (app, express, passport) {
             }
 
         });
-        console.log("here we go");
+        //console.log("here we go");
         transporter.sendMail({
-            to: 'neeti000@gmail.com',
+            to: 'chetan.kanjani@gmail.com',
             subject: req.body.subject,
             text: req.body.text
         }, function (err, res) {
-            console.log("close");
+            // console.log("close");
             if (err)
-                return err;
+                console.log(err);
             else
                 console.log("email sent");
 
