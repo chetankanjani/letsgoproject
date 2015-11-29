@@ -6,7 +6,7 @@ var morgan=require('morgan');
 var passport = require('passport');
 var flash = require('connect-flash');
 var session = require('express-session');
-
+var nodemailer = require('nodemailer');
 
 var app = express();
 
