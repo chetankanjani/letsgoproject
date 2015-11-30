@@ -511,8 +511,8 @@ module.exports = function (app, express, passport) {
         var transporter = nodemailer.createTransport("SMTP", {
             service: 'Gmail',
             auth: {
-                user: req.body.user,
-                pass: req.body.pass
+                user: 'letsgominor@gmail.com',
+                pass: 'letsgo_123'
             }
         }, {
             // default values for sendMail method
@@ -525,8 +525,8 @@ module.exports = function (app, express, passport) {
         //console.log("here we go");
         transporter.sendMail({
             to: 'letsgominor@gmail.com',
-            subject: req.body.subject,
-            text: req.body.text
+            subject: 'Feedback From ' + req.body.name + '@ ' + req.body.email,
+            text: req.body.message
         }, function (err, res) {
             // console.log("close");
             if (err)
@@ -535,6 +535,7 @@ module.exports = function (app, express, passport) {
                 console.log("email sent");
 
         });
+        res.json({message: "email sent"});
     });
     api.post('/rateevent', function (req, res) {
 

@@ -79,7 +79,24 @@ userController.controller("EventController", ['$scope', '$rootScope', '$location
 }])
 
 
-userController.controller("MainController", ['$scope', '$rootScope', '$location', '$http', '$localStorage', function ($scope, $rootScope, $location, $http, $localStorage) {
+userController.controller("MainHomeController", ['$scope', '$rootScope', '$location', '$http', '$localStorage', function ($scope, $rootScope, $location, $http, $localStorage) {
+
+
+    $scope.sendmessage = function () {
+
+        $http.post('/api/email', $scope.user).success(function (data) {
+
+
+            if (data.message == 'email sent') {
+                // $location.path('/main');
+            }
+            else {
+
+            }
+
+
+        });
+    }
 
 
 }]);
