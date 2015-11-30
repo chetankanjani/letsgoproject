@@ -62,7 +62,7 @@ a.rpanel:hover{ color: #fff; }
 #header { 
 	width: 100%; 
 	background: url('../../../public/app/images/header-bg.png');
-	/*background-color: #000000;*/
+	background-color: #1c424d;
 	height: 80px; 	
 	/*position: fixed;*/
 	margin-top: 00px;

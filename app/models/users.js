@@ -75,7 +75,8 @@ var UserSchema = mongoose.Schema({
         id: String,
         token: String,
         email: String,
-        name: String
+        name: String,
+        picurl: String,
     },
     favouriteid: [{eventid: String}]
 

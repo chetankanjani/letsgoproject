@@ -141,30 +141,27 @@ module.exports = function (app, express, passport) {
                     res.json({success: true});
             });
     });
-    api.get('/auth/facebook', passport.authenticate('facebook', {scope: ['email']}), function (req, res) {
+    api.get('/auth/facebook', function (req, res, next) {
 
         // console.log('inside auht facebook');
+        passport.authenticate('facebook', {scope: ['email']})(req, res, next);
     });
 
 
-    api.get('/auth/facebook/callback', passport.authenticate('facebook', {
+    api.get('/auth/facebook/callback',
 
-            //if(err)
-            //    console.log(err);
-            //else if(!user)
-            //    console.log('user not found');
-            //else
-            //    console.log(" i m here");
 
-            //console.log(user);
-            //
-            //return res.redirect(  '#/home');
+        //console.log('before athenticate');
+        passport.authenticate('facebook', {
+
 
             successRedirect: '#/home',
-            failureRedirect: '/login'
+            failureRedirect: '#/login'
 
 
         })
+        // console.log(' after callnack');
+
     );
 
 
@@ -371,14 +368,14 @@ module.exports = function (app, express, passport) {
 
         var username;
 
-        User.findOne({_id: req.body.userid}, function (err, user) {
+        User.findById({_id: req.body.userid}, function (err, user) {
             if (err)
                 console.log("username cannot be found request : add comment");
             else {
 
                 //return user.username;
 
-                console.log(user.name);
+                // console.log(user.name);
                 updatecomment(user);
 
 
@@ -387,12 +384,13 @@ module.exports = function (app, express, passport) {
 
 
         function updatecomment(user) {
-            //  console.log(user.name);
+            console.log(user.facebook.name);
+
             Event.findByIdAndUpdate({_id: req.body.eventid},
                 {
                     $push: {
                         "reviews": {
-                            userid: req.body.userid, username: user.name
+                            userid: req.body.userid, username: user.facebook.name
 
 
                             , comment: req.body.content

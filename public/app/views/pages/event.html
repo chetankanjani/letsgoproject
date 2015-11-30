@@ -10,7 +10,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <title>Eshop a Flat E-Commerce Bootstrap Responsive Website Template | Single :: w3layouts</title>
     <link href="../../public/app/css/bootstrap.css" rel='stylesheet' type='text/css'/>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery.min.js"></script>
+    <script src="../../public/app/js/jquery.min.js"></script>
     <!-- Custom Theme files -->
     <link href="../../public/app/css/styleweb.css" rel="stylesheet" type="text/css" media="all"/>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
@@ -88,15 +88,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="flexslider">
             <ul class="slides">
                 <li data-thumb="images/D91.jpg">
-                    <div class="thumb-image"><img src="../../public/app/images/D91.jpg" data-imagezoom="true"
+                    <div class="thumb-image"><img ng-src="../../public/app/images/D91.jpg" data-imagezoom="true"
                                                   class="img-responsive" alt=""/></div>
                 </li>
                 <li data-thumb="images/2.jpg">
-                    <div class="thumb-image"><img src="../../public/app/images/2.jpg" data-imagezoom="true" alt=""/>
+                    <div class="thumb-image"><img ng-src="../../public/app/images/2.jpg" data-imagezoom="true" alt=""/>
                     </div>
                 </li>
                 <li data-thumb="images/visit-delhi.jpg">
-                    <div class="thumb-image"><img src="../../public/app/images/visit-delhi.jpg" data-imagezoom="true"
+                    <div class="thumb-image"><img ng-src="../../public/app/images/visit-delhi.jpg" data-imagezoom="true"
                                                   class="img-responsive" alt=""/></div>
                 </li>
             </ul>
@@ -123,6 +123,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
             <div class="clearfix"></div>
         </div>
+
         <div class="span span3">
             <p class="left">RATING</p>
 
@@ -142,6 +143,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <label class="star star-1" for="star-1"></label>
                 </form>
             </div>
+            <!--<div ng-repeat="comment in data.reviews">-->
+            <!--<li>{{comment.username}}</li>-->
+
+            <!--<li>{{comment.comment}}</li>-->
+
+            <!--</div>-->
+
             </p>
             <div class="clearfix"></div>
         </div>
@@ -152,182 +160,175 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="clearfix"></div>
 </div>
 
+
 <!-- FlexSlider -->
-<script defer src="../../public/app/js/jquery.flexslider.js"></script>
-<script>
-    // Can also be used with $(document).ready()
-    $(window).load(function () {
-        $('.flexslider').flexslider({
-            animation: "slide",
-            controlNav: "thumbnails"
+<script src="../../public/app/js/jquery.flexslider.js"></script>
+<div>
+    <script>
+        // Can also be used with $(document).ready()
+        $(window).load(function () {
+            $('.flexslider').flexslider({
+                animation: "slide",
+                controlNav: "thumbnails"
+            });
         });
-    });
-</script>
+    </script>
 </div>
 <div class="clearfix"></div>
 <div class="reviews-tabs">
     <!-- Main component for a primary marketing message or call to action -->
     <ul class="nav nav-tabs responsive hidden-xs hidden-sm" id="myTab">
-        <li class="test-class active"><a class="deco-none misc-class" href="#how-to"> More Information</a></li>
-        <li class="test-class"><a href="#features">Specifications</a></li>
-        <li class="test-class"><a class="deco-none" href="#source">Reviews (7)</a></li>
-    </ul>
+        <!--<li class="test-class active"><a class="deco-none misc-class" href="#how-to"> More Information</a></li>-->
+        <!--<li class="test-class"><a href="#features">Specifications</a></li>-->
+        <li class="test-class">Reviews (7)</li>
 
-    <div class="tab-content responsive hidden-xs hidden-sm">
-        <div class="tab-pane active" id="how-to">
-            <p class="tab-text">Maecenas mauris velit, consequat sit amet feugiat rit, elit vitaeert scelerisque
-                elementum, turpis nisl accumsan ipsum Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. and scrambled it to make a type specimen book. It has survived Auction your website on Flippa
-                and you'll get the best price from serious buyers, dedicated support and a much better deal than you'll
-                find with any website broker. Sell your site today I need a twitter bootstrap 3.0 theme for the
-                full-calendar plugin. it would be great if the theme includes the add event; remove event, show event
-                details. this must be RESPONSIVE and works on mobile devices. Also, I've seen so many bootstrap themes
-                that comes up with the fullcalendar plugin. However these . </p>
-        </div>
-        <div class="tab-pane" id="features">
-            <p class="tab-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh urna, euismod
-                ut ornare non, volutpat vel tortor. Integer laoreet placerat suscipit. Sed sodales scelerisque commodo.
-                Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus. Proin consectetur
-                nibh quis urna gravida mollis.This tab has icon in consectetur adipiscing eliconse consectetur
-                adipiscing elit. Vestibulum nibh urna, ctetur adipiscing elit. Vestibulum nibh urna, t.consectetur
-                adipiscing elit. Vestibulum nibh urna, Vestibulum nibh urna,it.</p>
+        <!--<div ng-repeat="comment in data.reviews">-->
+        <!--<li>{{comment.username}}</li>-->
 
-            <p class="tab-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of
-                passages of Lorem Ipsum available,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </div>
-        <div class="tab-pane" id="source">
-            <div class="response">
-                <div class="media response-info">
-                    <div class="media-left response-text-left">
-                        <a href="#">
-                            <img class="media-object" src="../../public/app/images/icon1.png" alt=""/>
-                        </a>
-                        <h5><a href="#">Username</a></h5>
-                    </div>
-                    <div class="media-body response-text-right">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of
-                            passages of Lorem Ipsum available,
-                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <ul>
-                            <li>MARCH 21, 2015</li>
-                            <li><a href="single.html">Reply</a></li>
-                        </ul>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="media response-info">
-                    <div class="media-left response-text-left">
-                        <a href="#">
-                            <img class="media-object" src="../../public/app/images/icon1.png" alt=""/>
-                        </a>
-                        <h5><a href="#">Username</a></h5>
-                    </div>
-                    <div class="media-body response-text-right">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of
-                            passages of Lorem Ipsum available,
-                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <ul>
-                            <li>MARCH 26, 2054</li>
-                            <li><a href="single.html">Reply</a></li>
-                        </ul>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="media response-info">
-                    <div class="media-left response-text-left">
-                        <a href="#">
-                            <img class="media-object" src="../../public/app/images/icon1.png" alt=""/>
-                        </a>
-                        <h5><a href="#">Username</a></h5>
-                    </div>
-                    <div class="media-body response-text-right">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of
-                            passages of Lorem Ipsum available,
-                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <ul>
-                            <li>MAY 25, 2015</li>
-                            <li><a href="single.html">Reply</a></li>
-                        </ul>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="media response-info">
-                    <div class="media-left response-text-left">
-                        <a href="#">
-                            <img class="media-object" src="../../public/app/images/icon1.png" alt=""/>
-                        </a>
-                        <h5><a href="#">Username</a></h5>
-                    </div>
-                    <div class="media-body response-text-right">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of
-                            passages of Lorem Ipsum available,
-                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <ul>
-                            <li>FEB 13, 2015</li>
-                            <li><a href="single.html">Reply</a></li>
-                        </ul>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="media response-info">
-                    <div class="media-left response-text-left">
-                        <a href="#">
-                            <img class="media-object" src="../../public/app/images/icon1.png" alt=""/>
-                        </a>
-                        <h5><a href="#">Username</a></h5>
-                    </div>
-                    <div class="media-body response-text-right">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of
-                            passages of Lorem Ipsum available,
-                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <ul>
-                            <li>JAN 28, 2015</li>
-                            <li><a href="single.html">Reply</a></li>
-                        </ul>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="media response-info">
-                    <div class="media-left response-text-left">
-                        <a href="#">
-                            <img class="media-object" src="../../public/app/images/icon1.png" alt=""/>
-                        </a>
-                        <h5><a href="#">Username</a></h5>
-                    </div>
-                    <div class="media-body response-text-right">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of
-                            passages of Lorem Ipsum available,
-                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <ul>
-                            <li>APR 18, 2015</li>
-                            <li><a href="single.html">Reply</a></li>
-                        </ul>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="media response-info">
-                    <div class="media-left response-text-left">
-                        <a href="#">
-                            <img class="media-object" src="../../public/app/images/icon1.png" alt=""/>
-                        </a>
-                        <h5><a href="#">Username</a></h5>
-                    </div>
-                    <div class="media-body response-text-right">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of
-                            passages of Lorem Ipsum available,
-                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <ul>
-                            <li>DEC 25, 2014</li>
-                            <li><a href="single.html">Reply</a></li>
-                        </ul>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
+        <!--<li>{{comment.comment}}</li>-->
+
+        <!--</div>-->
+
+
+        <!--<div class="tab-content responsive hidden-xs hidden-sm">-->
+
+        <!--<div class="tab-pane" >-->
+        <!--<div class="response">-->
+        <div ng-repeat="comment in data.reviews">
+
+            <div class="media response-info">
+                <div class="media-left response-text-left">
+                    <a href="#">
+                        <img class="media-object" src="../../public/app/images/icon1.png" alt=""/>
+                    </a>
+                    <h5><a href="#">{{comment.username}}</a></h5>
             </div>
+                <div class="media-body response-text-right">
+                    <p>{{comment.comment}}.</p>
+                    <ul>
+                        <li>MARCH 21, 2015</li>
+                        <li><a href="single.html">Reply</a></li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
         </div>
-    </div>
+        </div>
+
+        <!-- -->
+        <!--<div class="media response-info">-->
+        <!--<div class="media-left response-text-left">-->
+        <!--<a href="#">-->
+        <!--<img class="media-object" src="../../public/app/images/icon1.png" alt=""/>-->
+        <!--</a>-->
+        <!--<h5><a href="#">Username</a></h5>-->
+        <!--</div>-->
+        <!--<div class="media-body response-text-right">-->
+        <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of-->
+        <!--passages of Lorem Ipsum available,-->
+        <!--sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>-->
+        <!--<ul>-->
+        <!--<li>MARCH 26, 2054</li>-->
+        <!--<li><a href="single.html">Reply</a></li>-->
+        <!--</ul>-->
+        <!--</div>-->
+        <!--<div class="clearfix"></div>-->
+        <!--</div>-->
+        <!--<div class="media response-info">-->
+        <!--<div class="media-left response-text-left">-->
+        <!--<a href="#">-->
+        <!--<img class="media-object" src="../../public/app/images/icon1.png" alt=""/>-->
+        <!--</a>-->
+        <!--<h5><a href="#">Username</a></h5>-->
+        <!--</div>-->
+        <!--<div class="media-body response-text-right">-->
+        <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of-->
+        <!--passages of Lorem Ipsum available,-->
+        <!--sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>-->
+        <!--<ul>-->
+        <!--<li>MAY 25, 2015</li>-->
+        <!--<li><a href="single.html">Reply</a></li>-->
+        <!--</ul>-->
+        <!--</div>-->
+        <!--<div class="clearfix"></div>-->
+        <!--</div>-->
+        <!--<div class="media response-info">-->
+        <!--<div class="media-left response-text-left">-->
+        <!--<a href="#">-->
+        <!--<img class="media-object" src="../../public/app/images/icon1.png" alt=""/>-->
+        <!--</a>-->
+        <!--<h5><a href="#">Username</a></h5>-->
+        <!--</div>-->
+        <!--<div class="media-body response-text-right">-->
+        <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of-->
+        <!--passages of Lorem Ipsum available,-->
+        <!--sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>-->
+        <!--<ul>-->
+        <!--<li>FEB 13, 2015</li>-->
+        <!--<li><a href="single.html">Reply</a></li>-->
+        <!--</ul>-->
+        <!--</div>-->
+        <!--<div class="clearfix"></div>-->
+        <!--</div>-->
+        <!--<div class="media response-info">-->
+        <!--<div class="media-left response-text-left">-->
+        <!--<a href="#">-->
+        <!--<img class="media-object" src="../../public/app/images/icon1.png" alt=""/>-->
+        <!--</a>-->
+        <!--<h5><a href="#">Username</a></h5>-->
+        <!--</div>-->
+        <!--<div class="media-body response-text-right">-->
+        <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of-->
+        <!--passages of Lorem Ipsum available,-->
+        <!--sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>-->
+        <!--<ul>-->
+        <!--<li>JAN 28, 2015</li>-->
+        <!--<li><a href="single.html">Reply</a></li>-->
+        <!--</ul>-->
+        <!--</div>-->
+        <!--<div class="clearfix"></div>-->
+        <!--</div>-->
+        <!--<div class="media response-info">-->
+        <!--<div class="media-left response-text-left">-->
+        <!--<a href="#">-->
+        <!--<img class="media-object" src="../../public/app/images/icon1.png" alt=""/>-->
+        <!--</a>-->
+        <!--<h5><a href="#">Username</a></h5>-->
+        <!--</div>-->
+        <!--<div class="media-body response-text-right">-->
+        <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of-->
+        <!--passages of Lorem Ipsum available,-->
+        <!--sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>-->
+        <!--<ul>-->
+        <!--<li>APR 18, 2015</li>-->
+        <!--<li><a href="single.html">Reply</a></li>-->
+        <!--</ul>-->
+        <!--</div>-->
+        <!--<div class="clearfix"></div>-->
+        <!--</div>-->
+        <!--<div class="media response-info">-->
+        <!--<div class="media-left response-text-left">-->
+        <!--<a href="#">-->
+        <!--<img class="media-object" src="../../public/app/images/icon1.png" alt=""/>-->
+        <!--</a>-->
+        <!--<h5><a href="#">Username</a></h5>-->
+        <!--</div>-->
+        <!--<div class="media-body response-text-right">-->
+        <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of-->
+        <!--passages of Lorem Ipsum available,-->
+        <!--sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>-->
+        <!--<ul>-->
+        <!--<li>DEC 25, 2014</li>-->
+        <!--<li><a href="single.html">Reply</a></li>-->
+        <!--</ul>-->
+        <!--</div>-->
+        <!--<div class="clearfix"></div>-->
+        <!--</div>-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--</div>-->
+        <!--</div>-->
 </div>
+
+</ul>
 
 </div>
 <div class="clearfix"></div>
@@ -340,6 +341,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 </div>
 </div>
+
 <script src="../../public/app/js/responsive-tabs.js"></script>
 <script type="text/javascript">
     $('#myTab a').click(function (e) {

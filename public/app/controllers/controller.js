@@ -16,8 +16,10 @@ userController.controller("HomeController", ['$scope', '$http', '$localStorage',
 
 userController.controller("EventController", ['$scope', '$rootScope', '$location', '$http', '$localStorage', function ($scope, $rootScope, $location, $http, $localStorage) {
 
+    // $location.path('/singleevent');
 
     $http.get("/api/getevent", {params: {eventid: $localStorage.onclickeventid}}).success(function (data) {
+
 
         console.log('inside  event controller');
         //console.log(data);
@@ -96,7 +98,7 @@ userController.controller("SignupController", ['$scope', '$rootScope', '$locatio
 }]);
 
 
-userController.controller("EventfeedController", ['$scope', '$rootScope', '$location', '$http', '$localStorage', function ($scope, $rootScope, $location, $http, $localStorage) {
+userController.controller("EventfeedController", ['$scope', '$rootScope', '$location', '$http', '$localStorage', '$window', function ($scope, $rootScope, $location, $http, $localStorage, $window) {
 
     $http.get("/api/eventfeed", {params: {userid: $localStorage.current_userid}}).success(function (data) {
 
@@ -115,6 +117,8 @@ userController.controller("EventfeedController", ['$scope', '$rootScope', '$loca
 
         $localStorage.onclickeventid = data;
         $location.path('/singleevent');
+        // $window.location.href = '#/singleevent';
+
 
     }
 

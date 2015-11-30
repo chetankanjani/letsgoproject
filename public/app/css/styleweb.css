@@ -7,7 +7,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 body{
 	padding:0;
 	margin:0;
-	font-size:14px;
 	font-family: 'Lato-Regular';
 	background:#fff;
 }
@@ -48,10 +47,9 @@ label{
 	margin:0;
 }
 /*-----start-header----*/
-
 .header-top-strip{
 	padding:8px 0 14px 0;
-	background-color:#1c424d;
+    background-color: #816263;
 }
 .header-top-left ul li {
     display: inline-block;
@@ -59,18 +57,17 @@ label{
 }
 .header-top-left ul li a {
 	color:#fff;
-	font-family: 'Lato', sans-serif;
 	text-decoration:none;
-	font-size:20px;
+    font-size: 13px;
 }
 span.glyphicon.glyphicon-user,span.glyphicon.glyphicon-lock {
-    font-size: 20px;
+    font-size: 10px;
     vertical-align: initial;
     margin-right: 6px;
 }
 .header-top-left {
     float: left;
-	margin-top:15px;
+    margin-top: 5px;
 }
 .header-right {
       float: right;
@@ -78,7 +75,7 @@ span.glyphicon.glyphicon-user,span.glyphicon.glyphicon-lock {
 }
 .box_1 h3 {
   color: #fff;
-  font-size: 20px;
+    font-size: 15px;
   margin-bottom: 0;
   float: left;
   font-weight: 400;
@@ -670,11 +667,11 @@ a.like_name {
 }
 .nbs-flexisel-nav-left {
 	left: 0px;
-	background: url(../../../public/app/images/arrows.png) no-repeat -8px -7px;
+    background: url(../images/arrows.png) no-repeat -8px -7px;
 }
 .nbs-flexisel-nav-right {
 	right: 0px;
-	background: url(../../../public/app/images/arrows.png) no-repeat -61px -7px;
+    background: url(../images/arrows.png) no-repeat -61px -7px;
 }
 .other-products {
     padding: 60px 0;
@@ -883,7 +880,7 @@ ul.tags_links li a:hover{
 	text-decoration:none;
 }
 .new-product{
-	width:100%;
+    width: 78%;
 	float:right;
 	background:rgba(245, 243, 243, 0.27);
 	min-height:800px;
@@ -1901,7 +1898,7 @@ div#myTabContent {
 	width: 100%;
 }
 .close1, .close2,.close3 {
-	background: url('../images/close_1.png') no-repeat 0px 0px;
+    background: url('../../../public/app/images/close_1.png') no-repeat 0px 0px;
 	cursor: pointer;
 	width: 28px;
 	height: 28px;

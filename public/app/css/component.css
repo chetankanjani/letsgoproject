@@ -21,7 +21,7 @@
 .cbp-vm-options a.cbp-vm-selected {
 }
 a.cbp-vm-icon.cbp-vm-grid.cbp-vm-selected {
-background: url(../images/grid_view.png)no-repeat;
+	background: url(../../../public/app/images/grid_view.png) no-repeat;
 }
 .cbp-vm-options a:hover, .cbp-vm-options a.cbp-vm-selected {
 }
@@ -90,11 +90,11 @@ background: url(../images/grid_view.png)no-repeat;
 }
 .cbp-vm-grid:before {
 	content: " ";
-	background: url(../images/grid_view.png)no-repeat;
+	background: url(../../../public/app/images/grid_view.png) no-repeat;
 }
 .cbp-vm-list:before {
 	content: " ";
-	background: url(../images/list_view.png)no-repeat;
+	background: url(../../../public/app/images/list_view.png) no-repeat;
 }
 .cbp-vm-add:before {
 	content: " ";

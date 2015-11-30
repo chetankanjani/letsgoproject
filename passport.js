@@ -75,36 +75,41 @@ module.exports = function (passport) {
             clientID: config.facebook.appId,
             clientSecret: config.facebook.appSecret,
             callbackURL: config.facebook.redirectUrl,
-            enableProof: true
+            profileFields: ['id', 'name', 'displayName', 'emails', 'photos']
 
         },
         function (accessToken, refreshToken, profile, done) {
             process.nextTick(function () {
+
                 User.findOne({'facebook.id': profile.id}, function (err, user) {
 
+                        console.log(profile);
 
-                    if (err)
-                        return done(err);
+                    if (err) {
+                        // console.log("tick errr");
+                        return done(err)
+                    }
+                    ;
                     if (user)
                         return done(null, user);
                     else {
                         var newUser = new User();
                         newUser.facebook.id = profile.id;
-                        //   newUser.facebook.token = accessToken;
+                        newUser.facebook.token = accessToken;
                         newUser.facebook.name = profile.displayName;
-                        // newUser.facebook.email = profile.emails[0].value;
-                        // console.log(accessToken);
-                        console.log(newUser.facebook.id);
+                        newUser.facebook.email = profile.emails[0].value;
+                        newUser.facebook.picurl = profile.photos[0].value;
+                        // console.log("access to ken is "+accessToken);
+                        //console.log(newUser.facebook.id);
 
                         newUser.save(function (err) {
                             if (err)
                                 console.log(err);
                             return done(null, newUser);
                         })
-                        console.log(profile);
                     }
                 });
-            });
+                });
             // done(null, profile);
         }
     ));
