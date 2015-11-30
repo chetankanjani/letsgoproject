@@ -707,7 +707,8 @@ module.exports = function (app, express, passport) {
 
         event.description = req.body.description;
         event.price = req.body.price;
-
+        event.lat = req.body.lat;
+        event.long = req.body.long;
         event.rating.value = req.body.rating;
         event.imageurl = req.body.imageurl;
         event.userimageurl = req.body.userimageurl;

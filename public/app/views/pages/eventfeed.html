@@ -1,12 +1,6 @@
-<!--<link rel="stylesheet" href="../../../../public/app/css/map.css"/>-->
 
 
-<!--<div>-->
-<!--<div id="map"></div>-->
-<!--<div id="class" ng-repeat="marker in markers | orderBy : 'title'">-->
-<!--<a href="#" ng-click="openInfoWindow($event, marker)">{{marker.title}}</a>-->
-<!--</div>-->
-<!--</div>-->
+
 <!--<div ng-repeat="item in userdata[0]">-->
 
 <!--<li>{{item.name}}</li>-->
@@ -173,6 +167,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                             <div ng-repeat="item in userdata[0]">
                                 <ul id="work-thumbs">
+                                    <a class="cbp-vm-image" href="" ng-click="openevent(item._id)" data={{item._id}}>
 
                                     <div class="product_container">
                                         <div class="cart-left">
@@ -182,7 +177,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     </div>
 
 
-                                <a class="cbp-vm-image" href="" ng-click="openevent(item._id)" data={{item._id}}>
                                     <div class="simpleCart_shelfItem">
                                         <div class="view view-first">
                                             <div class="inner_content clearfix">

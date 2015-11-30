@@ -3,12 +3,16 @@ Author: W3layouts
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
+
 -->
 <!DOCTYPE html>
+
 <html>
 <head>
     <title>Eshop a Flat E-Commerce Bootstrap Responsive Website Template | Single :: w3layouts</title>
     <link href="../../public/app/css/bootstrap.css" rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" href="../../../../public/app/css/map.css"/>
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="../../public/app/js/jquery.min.js"></script>
     <!-- Custom Theme files -->
@@ -88,7 +92,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="flexslider">
             <ul class="slides">
                 <li data-thumb="images/D91.jpg">
-                    <div class="thumb-image"><img ng-src="../../public/app/images/D91.jpg" data-imagezoom="true"
+                    <img ng-src="{{data.imageurl[0]}}" data={{data._id}}
+                         class="img-responsive" alt="" height="160" width="160"/>
+
+                    <div class="thumb-image"><img ng-src="{{}}" data-imagezoom="true"
                                                   class="img-responsive" alt=""/></div>
                 </li>
                 <li data-thumb="images/2.jpg">
@@ -102,6 +109,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </ul>
         </div>
     </div>
+
+
     <div class="col-md-7 dress-info">
         <div class="dress-name">
             <h3>India Gate</h3>
@@ -110,7 +119,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <p>{{data.description}}</p>
         </div>
         <div class="span span1">
-            <p class="left">Location :</p>
+            <p class="left">Location :
+                <img ng-src="{{data.imageurl[0]}}" data={{data._id}} class="img-responsive" alt="" height="160"
+                     width="160"/>
+
 
             <p class="right">{{data.location}}</p>
 
@@ -174,13 +186,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         });
     </script>
 </div>
+
+<div>
+    <div id="map"></div>
+    <div id="class" ng-repeat="marker in markers | orderBy : 'title'">
+        <a href="#" ng-click="openInfoWindow($event, marker)">{{marker.title}}</a>
+    </div>
+</div>
 <div class="clearfix"></div>
 <div class="reviews-tabs">
     <!-- Main component for a primary marketing message or call to action -->
     <ul class="nav nav-tabs responsive hidden-xs hidden-sm" id="myTab">
         <!--<li class="test-class active"><a class="deco-none misc-class" href="#how-to"> More Information</a></li>-->
         <!--<li class="test-class"><a href="#features">Specifications</a></li>-->
-        <li class="test-class">Reviews (7)</li>
+        <li class="test-class">Comments</li>
 
         <!--<div ng-repeat="comment in data.reviews">-->
         <!--<li>{{comment.username}}</li>-->

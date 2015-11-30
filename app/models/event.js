@@ -7,6 +7,8 @@ EventSchema={
     location:{ type:String },
     description:{type:String  },
     price: String,
+    lat: String,
+    long: String,
     rating: {
         value: String, count: {type: String, default: 10}, userrating: [{
             uservalue: String, userid: String

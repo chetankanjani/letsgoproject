@@ -17,6 +17,54 @@ userController.controller("HomeController", ['$scope', '$http', '$localStorage',
 userController.controller("EventController", ['$scope', '$rootScope', '$location', '$http', '$localStorage', function ($scope, $rootScope, $location, $http, $localStorage) {
 
     // $location.path('/singleevent');
+    $http.get("/api/getevent", {params: {eventid: $localStorage.onclickeventid}}).success(function (data) {
+
+        $scope.places = data;
+
+        console.log(data);
+
+        var mapOptions = {
+            zoom: 4,
+            center: new google.maps.LatLng(40.0000, -98.0000),
+            mapTypeId: google.maps.MapTypeId.TERRAIN
+        }
+
+        $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+        $scope.markers = [];
+
+        var infoWindow = new google.maps.InfoWindow();
+
+        var createMarker = function (info) {
+            console.log(info.lat);
+            var marker = new google.maps.Marker({
+                map: $scope.map,
+                position: new google.maps.LatLng(info.lat, info.long),
+                title: info.name
+            });
+            marker.content = '<div class="infoWindowContent">' + info.rating.value + '</div>';
+
+            google.maps.event.addListener(marker, 'click', function () {
+                infoWindow.setContent('<h2>' + marker.title + '</h2>' + marker.content);
+                infoWindow.open($scope.map, marker);
+            });
+
+            $scope.markers.push(marker);
+
+        }
+
+        for (i = 0; i < 1; i++) {
+            createMarker($scope.places);
+        }
+
+        $scope.openInfoWindow = function (e, selectedMarker) {
+            e.preventDefault();
+
+            console.log("inside openinfowindow");
+            google.maps.event.trigger(selectedMarker, 'click');
+        }
+
+    });
 
     $http.get("/api/getevent", {params: {eventid: $localStorage.onclickeventid}}).success(function (data) {
 
@@ -123,53 +171,7 @@ userController.controller("EventfeedController", ['$scope', '$rootScope', '$loca
     }
 
 
-    $http.get("/api/getgeojson").success(function (data) {
 
-
-        $scope.places = data;
-
-        var mapOptions = {
-            zoom: 4,
-            center: new google.maps.LatLng(40.0000, -98.0000),
-            mapTypeId: google.maps.MapTypeId.TERRAIN
-        }
-
-        $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
-
-        $scope.markers = [];
-
-        var infoWindow = new google.maps.InfoWindow();
-
-        var createMarker = function (info) {
-
-            var marker = new google.maps.Marker({
-                map: $scope.map,
-                position: new google.maps.LatLng(info.lat, info.long),
-                title: info.city
-            });
-            marker.content = '<div class="infoWindowContent">' + info.desc + '</div>';
-
-            google.maps.event.addListener(marker, 'click', function () {
-                infoWindow.setContent('<h2>' + marker.title + '</h2>' + marker.content);
-                infoWindow.open($scope.map, marker);
-            });
-
-            $scope.markers.push(marker);
-
-        }
-
-        for (i = 0; i < $scope.places.length; i++) {
-            createMarker($scope.places[i]);
-        }
-
-        $scope.openInfoWindow = function (e, selectedMarker) {
-            e.preventDefault();
-
-            console.log("inside openinfowindow");
-            google.maps.event.trigger(selectedMarker, 'click');
-        }
-
-    });
 
 
 }]);
