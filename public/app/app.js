@@ -103,6 +103,15 @@ myApp.config(['$routeProvider', function ($routeProvider) {
         })
 
 }]);
+myApp.config(['$routeProvider', function ($routeProvider) {
+    $routeProvider.
+
+        when('/addevent', {
+            templateUrl: '../../public/app/views/pages/addevent.html',
+            controller: 'AddEventController'
+        })
+
+}]);
 
 
 

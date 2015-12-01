@@ -219,34 +219,36 @@ module.exports = function (app, express, passport) {
             }
             else {
 
-
-                var i;
-                var length = users.favouriteid.length;
-
-
-                for (i = 0; i < length; i++) {
+                if (users != null) {
+                    var i;
+                    var length = users.favouriteid.length;
 
 
-                    var temp = {eid: users.favouriteid[i].eventid};
+                    for (i = 0; i < length; i++) {
 
 
-                    Event.findById({_id: temp.eid}, function (err, events) {
-                        if (err) {
-                            res.send(err);
-                            return;
-                        }
-                        else {
-
-                            array.push(events);
+                        var temp = {eid: users.favouriteid[i].eventid};
 
 
-                        }
-                        if (array.length === length) {//it is true when all events are pushed
-                            res.json(array);
-                        }
+                        Event.findById({_id: temp.eid}, function (err, events) {
+                            if (err) {
+                                res.send(err);
+                                return;
+                            }
+                            else {
 
-                    })
+                                array.push(events);
 
+
+                            }
+                            if (array.length === length) {//it is true when all events are pushed
+                                res.json(array);
+                            }
+
+                        })
+
+
+                    }
 
                 }
 
@@ -459,45 +461,48 @@ module.exports = function (app, express, passport) {
                     //if(users.favouriteid==null)
                     console.log('inside second function inside get reues');
                     console.log(users);
-                    var length = users.favouriteid.length;
-                    //else
-                    //var length=0;
 
-                    if (length > 0) {
-                        for (i = 0; i < length; i++) {
+                    if (users != null) {
+                        var length = users.favouriteid.length;
+                        //else
+                        //var length=0;
 
-
-                            var temp = {eid: users.favouriteid[i].eventid};
-
-
-                            Event.findById({_id: temp.eid}, function (err, events) {
-                                if (err) {
-                                    res.send(err);
-                                    return;
-                                }
-                                else {
-
-                                    array.push(events._id);
+                        if (length > 0) {
+                            for (i = 0; i < length; i++) {
 
 
-                                }
-                                if (array.length === length) {//it is true when all events are pushed
-                                    {
-                                        array1.push(array);
-                                        res.json(array1);
+                                var temp = {eid: users.favouriteid[i].eventid};
+
+
+                                Event.findById({_id: temp.eid}, function (err, events) {
+                                    if (err) {
+                                        res.send(err);
+                                        return;
                                     }
-                                }
+                                    else {
 
-                            })
+                                        array.push(events._id);
 
 
+                                    }
+                                    if (array.length === length) {//it is true when all events are pushed
+                                        {
+                                            array1.push(array);
+                                            res.json(array1);
+                                        }
+                                    }
+
+                                })
+
+
+                            }
                         }
-                    }
-                    else {
-                        array1.push(array);
-                        res.json(array1);
-                    }
+                        else {
+                            array1.push(array);
+                            res.json(array1);
+                        }
 
+                    }
                 }
 
             });
@@ -598,6 +603,28 @@ module.exports = function (app, express, passport) {
 
 
         }
+
+
+    });
+
+
+    api.post('/getfbuserid', function (req, res) {
+
+
+        var fbid = req.body.fbid;
+
+
+        User.findOne({'facebook.id': fbid}, function (err, user) {
+            if (err)
+                console.log(err);
+            else {
+                console.log(user._id);
+                res.json({userid: user._id});
+            }
+        });
+
+
+
 
 
     });

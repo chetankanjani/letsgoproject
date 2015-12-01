@@ -12,6 +12,10 @@ userController.controller("HomeController", ['$scope', '$http', '$localStorage',
 
 
 }]);
+userController.controller("AddEventController", ['$scope', '$http', '$localStorage', function ($scope, $http, $localStorage) {
+
+
+}]);
 
 
 userController.controller("EventController", ['$scope', '$rootScope', '$location', '$http', '$localStorage', function ($scope, $rootScope, $location, $http, $localStorage) {
