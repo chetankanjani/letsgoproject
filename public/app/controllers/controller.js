@@ -106,6 +106,14 @@ userController.controller("MainHomeController", ['$scope', '$rootScope', '$locat
 }]);
 userController.controller("LocalLoginController", ['$scope', '$rootScope', '$location', '$http', '$localStorage', function ($scope, $rootScope, $location, $http, $localStorage) {
 
+    $scope.redirectlocallogin = function () {
+
+        $location.path('/locallogin');
+    }
+
+
+
+
     $scope.signin = function(){
 
         console.log('inside sigin functuon');
