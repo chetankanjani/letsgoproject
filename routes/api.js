@@ -56,6 +56,7 @@ module.exports = function (app, express, passport) {
         user.local.password = req.body.password;
         //console.log(req.body.username);
         //console.log(user.local.password);
+        user.facebook=null;
 
 
         user.save(function (err) {
@@ -143,15 +144,12 @@ module.exports = function (app, express, passport) {
     });
     api.get('/auth/facebook', function (req, res, next) {
 
-        // console.log('inside auht facebook');
         passport.authenticate('facebook', {scope: ['email']})(req, res, next);
     });
 
 
     api.get('/auth/facebook/callback',
 
-
-        //console.log('before athenticate');
         passport.authenticate('facebook', {
 
 
@@ -160,7 +158,6 @@ module.exports = function (app, express, passport) {
 
 
         })
-        // console.log(' after callnack');
 
     );
 
@@ -344,8 +341,11 @@ module.exports = function (app, express, passport) {
             events.sort(function (a, b) {
                 return (a.price - b.price) * (ascending ? 1 : -1);
             });
-
-            res.json(events);
+            var array=[];
+            var array1=[];
+            array1.push(events);
+            array1.push(array);
+            res.json(array1);
         });
     });
     api.get('/sortby_rating', function (req, res) {
@@ -360,7 +360,11 @@ module.exports = function (app, express, passport) {
                 return (a.rating - b.rating) * (ascending ? 1 : -1);
             });//"message": "'$push' is empty. You must specify a field like so: {$push: {<field>: ...}}",
 
-            res.json(events);
+            var array=[];
+            var array1=[];
+            array1.push(events);
+            array1.push(array);
+            res.json(array1);
         });
     });
 
@@ -386,16 +390,28 @@ module.exports = function (app, express, passport) {
 
 
         function updatecomment(user) {
-            console.log(user.facebook.name);
 
+            if(user.facebook.name!=null&&user.facebook.picurl!=null) {
+                var a = user.facebook.name;
+                var b=user.facebook.picurl;
+            }
+            else {
+                var a = user.local.name;
+                var b ="http://tr3.cbsistatic.com/fly/280-fly/bundles/techrepubliccore/images/icons/standard/icon-user-default.png";
+            }
+
+
+
+            console.log(a);
             Event.findByIdAndUpdate({_id: req.body.eventid},
                 {
                     $push: {
                         "reviews": {
-                            userid: req.body.userid, username: user.facebook.name
+                            userid: req.body.userid, username: a
 
 
-                            , comment: req.body.content
+                            , comment: req.body.content,
+                            picurl:b
                         }
                     }
                 },
@@ -542,6 +558,8 @@ module.exports = function (app, express, passport) {
         });
         res.json({message: "email sent"});
     });
+
+
     api.post('/rateevent', function (req, res) {
 
         var userid = req.body.userid;
@@ -566,18 +584,8 @@ module.exports = function (app, express, passport) {
 
         function calculaterating(event, uservalue) {
 
-            console.log(event);
-
-            var count = event.rating.count;
-            count = count + 1;
-            var value = event.rating.value;
-
-            value = (value * (count - 1) + uservalue) / count
-
 
             Event.findById({_id: eventid},
-                // {$push: {'rating.userrating' : 'value','rating.count':'count'}},
-                //   {upsert: true},
                 function (err, events) {
                     if (err) {
                         res.send(err);
@@ -585,28 +593,205 @@ module.exports = function (app, express, passport) {
                     }
                     else {
 
+
+                        var count = events.rating.count;
+                        count = count + 1;
+                        var value = events.rating.value;
+                        console.log(value);
+                        console.log(count);
+                        console.log(uservalue);
+                        value = (value * (count - 1));
+                        var u=+uservalue;
+                        value=value+u;
+                        value/=count;
                         events.rating.value = value;
                         events.rating.count = count;
-                        console.log(events);
-
-
-                        res.json('rating updated');
+                        console.log(value);
+                        console.log(count);
+                        Event.findOneAndUpdate(
+                            {'_id': eventid},
+                            {$set: {
+                                'rating.count': count,
+                                'rating.value': value
+                            }},
+                            function(err, event){
+                                if (err) {
+                                    res.send(err);
+                                    return;
+                                }
+                                else {
+                                    //res.json({success:true});
+                                    console.log(event);
+                                }
+                            });
                     }
                 });
 
 
-
-
-
-
-
-
-
+            res.json({success:true});
         }
+    });
+
+    //
+    //
+    //api.post('/rateevent', function (req, res) {
+    //
+    //    var userid = req.body.userid;
+    //    var uservalue = req.body.uservalue;
+    //    var eventid = req.body.eventid;
+    //
+    //    Event.findByIdAndUpdate({_id: eventid},
+    //        {$push: {'rating.userrating': {uservalue: uservalue, userid: userid}}},
+    //        {upsert: true},
+    //        function (err, events) {
+    //            if (err) {
+    //                res.send(err);
+    //                return;
+    //            }
+    //            else {
+    //
+    //                //console.log(uservalue);
+    //
+    //                calculaterating(events, uservalue);
+    //            }
+    //        });
+    //
+    //    function calculaterating(event, uservalue) {
+    //
+    //
+    //        Event.findById({_id: eventid},
+    //            function (err, events) {
+    //                if (err) {
+    //                    res.send(err);
+    //                    return;
+    //                }
+    //                else {
+    //
+    //
+    //                    var count = event.rating.count;
+    //                    count = count + 1;
+    //                    var value = event.rating.value;
+    //                    console.log(value);
+    //                    console.log(count);
+    //                    console.log(uservalue);
+    //                    value = (value * (count - 1));
+    //                    var u=+uservalue;
+    //                    value=value+u;
+    //                    value/=count;
+    //                    events.rating.value = value;
+    //                    events.rating.count = count;
+    //                    console.log(value);
+    //                    console.log(count);
+    //                }
+    //            });
+    //        Event.findByIdAndUpdate(
+    //            {'_id': eventid},
+    //            {$set: {
+    //                'rating.count': event.rating.count,
+    //                'rating.value': event.rating.value
+    //            }},
+    //            function(err, event){
+    //                if (err) {
+    //                    res.send(err);
+    //                    return;
+    //                }
+    //                else {
+    //                    //res.json({success:true});
+    //                    console.log(event);
+    //                }
+    //            });
+    //
+    //        res.json({success:true});
+    //    }
+    //});
+
+    //api.post('/rateevent', function (req, res) {
+    //
+    //    var userid = req.body.userid;
+    //    var uservalue = req.body.uservalue;
+    //    var eventid = req.body.eventid;
+    //
+    //    Event.findByIdAndUpdate({_id: eventid},
+    //        {$push: {'rating.userrating': {uservalue: uservalue, userid: userid}}},
+    //        {upsert: true},
+    //        function (err, events) {
+    //            if (err) {
+    //                res.send(err);
+    //                return;
+    //            }
+    //            else {
+    //
+    //                //console.log(uservalue);
+    //
+    //                calculaterating(events, uservalue);
+    //            }
+    //        });
+    //
+    //    function calculaterating(event, uservalue) {
+    //
+    //        console.log(event);
+    //
+    //        var count = event.rating.count;
+    //        count = count + 1;
+    //        var value = event.rating.value;
+    //
+    //        value = (value * (count - 1) + uservalue) / count
+    //
+    //
+    //        Event.findById({_id: eventid},
+    //            // {$push:\ {'rating.userrating' : 'value','rating.count':'count'}},
+    //            //   {upsert: true},
+    //            function (err, events) {
+    //                if (err) {
+    //                    res.send(err);
+    //                    return;
+    //                }
+    //                else {
+    //
+    //                    events.rating.value = value;
+    //                    events.rating.count = count;
+    //                    console.log(events);
+    //
+    //
+    //                    res.json('rating updated');
+    //                }
+    //            });
+    //
+    //    }
+    //
+    //
+    //});
+
+    api.get('/getratedetails',function(req,res) {
+
+        var eventid=req.param.eventid;
+        var userid=req.param.userid;
+
+
+        Event.findOne({'_id': eventid,'rating.userrating.userid':userid}, function (err, events) {
+            if (err) {
+                res.send(err);
+                return;
+            }
+            else {
+                //    rating.userrating.userid':userid
+                console.log(events);
+                if(events!=null)
+                if(events.rating!=null)
+                    if(events.rating.userrating!=null)
+                        if(events.rating.userrating.uservalue!=null)
+                            res.json({success:true,'uservalue':events.rating.userrating.uservalue});
+
+                res.json({success:false});
+            }
+        });
+
+
+
+
 
 
     });
-
 
     api.post('/getfbuserid', function (req, res) {
 
@@ -618,8 +803,38 @@ module.exports = function (app, express, passport) {
             if (err)
                 console.log(err);
             else {
-                console.log(user._id);
-                res.json({userid: user._id});
+              //  console.log(user._id);
+                if(user!=null)
+                res.json({userid: user._id,success:true});
+                else
+                {
+                    var user = new User();
+
+                    user.local=null;
+                    user.facebook.id=req.body.fbid;
+                    user.facebook.token=req.body.token;
+                    user.facebook.email=req.body.email;
+                    user.facebook.name=req.body.name;
+                    user.facebook.picurl=req.body.picurl;
+
+
+                    user.save(function (err) {
+                        if (err) {
+                            if (err.code == 1100)
+                                return res.json({message: " fb user account not created  ", success: false});
+                            else {
+                                console.log(err);
+                                return res.json({message: "User not created", success: false});
+
+                            }
+                        }
+                        else
+                            return res.json({userid: user._id , success: true});
+
+
+                    });
+
+                }
             }
         });
 
@@ -646,7 +861,24 @@ module.exports = function (app, express, passport) {
         });
 
     });
+    api.get('/getuser', function (req, res) {
+
+
+        var userid = req.param('userid');
+
+        User.findById({_id: userid}, function (err, users) {
+            if (err) {
+                res.send(err);
+                return;
+            }
+            else {
+                res.json(users);
+            }
+        });
+
+    });
     api.post('/addrecent', function (req, res) {
+
         User.findByIdAndUpdate({_id: req.body.userid}, {
                 $push: {
                     "recent": {
@@ -662,21 +894,58 @@ module.exports = function (app, express, passport) {
                 else
                     res.json(user);
             });
+
     });
 
     api.get('/getrecent', function (req, res) {
 
+        var userid = req.param('userid');
+        array = [];
 
-        User.findById({_id: req.params.userid}, function (err, users) {
+
+        User.findById({_id: userid}, function (err, users) {
             if (err) {
                 res.send(err);
                 return;
             }
             else {
-                res.json(users);
-            }
-        });
 
+                if (users != null) {
+                    var i;
+                    var length = users.recent.length;
+
+
+                    for (i = 0; i < length; i++) {
+
+
+                        var temp = {eid: users.recent[i].eventid};
+
+
+                        Event.findById({_id: temp.eid}, function (err, events) {
+                            if (err) {
+                                res.send(err);
+                                return;
+                            }
+                            else {
+
+                                array.push(events);
+
+
+                            }
+                            if (array.length === length) {//it is true when all events are pushed
+                                res.json(array);
+                            }
+
+                        })
+
+
+                    }
+
+                }
+
+            }
+
+        });
 
     });
     /*
@@ -725,6 +994,7 @@ module.exports = function (app, express, passport) {
         });
 
     });
+
 
 
     api.post('/newevent', function (req, res) {

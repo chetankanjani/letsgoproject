@@ -10,8 +10,8 @@ EventSchema={
     lat: String,
     long: String,
     rating: {
-        value: String, count: {type: String, default: 10}, userrating: [{
-            uservalue: String, userid: String
+        value: Number, count: {type: Number, default: 10}, userrating: [{
+            uservalue: Number, userid: String
         }]
     },
     imageurl:[String],
@@ -19,8 +19,8 @@ EventSchema={
 
 
     reviews:[{ userid:String,
-        username: String,
-                comment:String}]
+                 username: String,
+                comment:String , picurl:String}]
 
 };
 

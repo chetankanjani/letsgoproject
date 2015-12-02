@@ -1637,6 +1637,7 @@ pre code {
   }
 }
 .container-fluid {
+
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
@@ -2785,6 +2786,7 @@ select.input-lg {
 }
 textarea.input-lg,
 select[multiple].input-lg {
+
   height: auto;
 }
 .form-group-lg .form-control {
@@ -6334,6 +6336,7 @@ button.close {
 .container-fluid:after,
 .row:before,
 .row:after,
+
 .form-horizontal .form-group:before,
 .form-horizontal .form-group:after,
 .btn-toolbar:before,

@@ -42,6 +42,27 @@ app.get('/',function(req,res){
 });
 app.use(flash()); // use connect-flash for flash messages stored in session
 
+//var FB=require('fb');
+////var app = express();
+//FB.permissions=['publish_actions','status_update'];
+//FB.forceDialogAuth=true;
+//
+//app.post('/post',function(req,res) {
+//
+//    FB.setAccessToken('CAARrsyVHXFEBAGWZB1OOK3xXm4Pulr3QGI6BFPfBHtAcw8wt01lMquPAVwZBzZBySvVJ36Pea7kOKs1tT2shahBuZAtxxXION5oxvi4m86TXEWfrsYF8WCZCM07ZA3LRNCzODU2mAMPke2BuN45SZAgtdaxZAFbxaCuUfSUFFoTkWR1O4nEMAxSm7ZAbzw6QKHgDvc2eqrZAElhyRVSOb8185399sZBhhnOH08ZD');
+//
+//    var body = 'yuhuuuuuuuu';
+//    console.log('yolo');
+//
+//    FB.api('me/feed', 'post', {message: body}, function (res) {
+//        if (!res || res.error) {
+//            console.log(!res ? 'error' : res.error);
+//            return;
+//        }
+//        console.log('post id:' + res.id);
+//    });
+//});
+
 
 app.listen(config.port,function(err){
     if(err)

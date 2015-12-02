@@ -16,6 +16,7 @@ module.exports = function (passport) {
         User.findById(id, function (err, user) {
             done(err, user);
         });
+
     });
 
 
@@ -86,14 +87,16 @@ module.exports = function (passport) {
                         console.log(profile);
 
                     if (err) {
-                        // console.log("tick errr");
-                        return done(err)
+                         console.log(err);
+                       // return done(err);
                     }
-                    ;
+
                     if (user)
                         return done(null, user);
                     else {
                         var newUser = new User();
+
+                        newUser.local=null;
                         newUser.facebook.id = profile.id;
                         newUser.facebook.token = accessToken;
                         newUser.facebook.name = profile.displayName;
@@ -104,13 +107,14 @@ module.exports = function (passport) {
 
                         newUser.save(function (err) {
                             if (err)
-                                console.log(err);
+                                throw err;
+
                             return done(null, newUser);
                         })
                     }
                 });
                 });
-            // done(null, profile);
+           // done(null, profile);
         }
     ));
 

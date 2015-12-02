@@ -68,7 +68,7 @@ var UserSchema = mongoose.Schema({
     local: {
 
         name: String,
-        username: {type: String, index: {unique: true}},
+        username: {type: String, },
         password: {type: String, select: false}
     },
     facebook: {
@@ -78,7 +78,8 @@ var UserSchema = mongoose.Schema({
         name: String,
         picurl: String,
     },
-    favouriteid: [{eventid: String}]
+    favouriteid: [{eventid: String}],
+    recent: [{eventid: String}]
 
 });
 

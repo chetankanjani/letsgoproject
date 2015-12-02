@@ -15,12 +15,83 @@ userController.controller("HomeController", ['$scope', '$http', '$localStorage',
 userController.controller("AddEventController", ['$scope', '$http', '$localStorage', function ($scope, $http, $localStorage) {
 
 
+
+
+
+
+}])
+
+userController.controller("ProfileController", ['$scope', '$http', '$localStorage','$location', function ($scope, $http, $localStorage,$location) {
+
+
+
+    $scope.openevent = function (data) {
+
+
+        console.log("open event");
+        console.log(data);
+
+        $localStorage.onclickeventid = data;
+        $location.path('/singleevent');
+
+
+    }
+    $http.get("/api/getfavourites", {params: {userid: $localStorage.current_userid}}).success(function (data) {
+
+        console.log(data);
+        $scope.data=data;
+    });
+    $http.get("/api/getrecent", {params: {userid: $localStorage.current_userid}}).success(function (data) {
+
+        console.log(data);
+        $scope.data1=data;
+    });
+    $http.get("/api/getuser", {params: {userid: $localStorage.current_userid}}).success(function (data) {
+
+        console.log(data);
+        $scope.data2=data;
+    });
+
+
+
+
 }]);
 
 
 userController.controller("EventController", ['$scope', '$rootScope', '$location', '$http', '$localStorage', function ($scope, $rootScope, $location, $http, $localStorage) {
 
     // $location.path('/singleevent');
+
+    $scope.addtofav = function () {
+
+
+
+
+
+
+
+    }
+
+
+    $scope.postcomment = function () {
+
+
+        //console.log($scope.user);
+        $scope.user.eventid=$localStorage.onclickeventid;
+            $scope.user.userid=$localStorage.current_userid;
+
+        $http.post('/api/addcomment', $scope.user).success(function (data) {
+
+
+                //if (data.success ==true) {
+                $location.path('/singleevent');
+
+
+
+        });
+    }
+
+
     $http.get("/api/getevent", {params: {eventid: $localStorage.onclickeventid}}).success(function (data) {
 
         $scope.places = data;
@@ -80,7 +151,32 @@ userController.controller("EventController", ['$scope', '$rootScope', '$location
 
     });
 
-}])
+    //$scope.data1.eventid=$localStorage.onclickeventid;
+    //$scope.data1.userid=$localStorage.current_userid;
+    $http.post('/api/addrecent', $scope.user).success(function (data) {
+
+    });
+
+
+
+    $scope.addtofav = function () {
+
+        console.log('add fav');
+
+        $http.post('/api/addfavourites', $scope.user).success(function (data) {
+
+
+            $location.path('/eventfeed');
+        });
+
+
+    }
+
+
+
+
+
+    }]);
 
 
 userController.controller("MainHomeController", ['$scope', '$rootScope', '$location', '$http', '$localStorage', function ($scope, $rootScope, $location, $http, $localStorage) {
@@ -105,14 +201,6 @@ userController.controller("MainHomeController", ['$scope', '$rootScope', '$locat
 
 }]);
 userController.controller("LocalLoginController", ['$scope', '$rootScope', '$location', '$http', '$localStorage', function ($scope, $rootScope, $location, $http, $localStorage) {
-
-    $scope.redirectlocallogin = function () {
-
-        $location.path('/locallogin');
-    }
-
-
-
 
     $scope.signin = function(){
 
@@ -179,8 +267,7 @@ userController.controller("EventfeedController", ['$scope', '$rootScope', '$loca
 
     $http.get("/api/eventfeed", {params: {userid: $localStorage.current_userid}}).success(function (data) {
 
-        // console.log('inside controller');
-        //console.log(data);
+
         console.log(data[0].name);
         $scope.userdata = data;
 
@@ -194,7 +281,6 @@ userController.controller("EventfeedController", ['$scope', '$rootScope', '$loca
 
         $localStorage.onclickeventid = data;
         $location.path('/singleevent');
-        // $window.location.href = '#/singleevent';
 
 
     }

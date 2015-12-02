@@ -112,7 +112,15 @@ myApp.config(['$routeProvider', function ($routeProvider) {
         })
 
 }]);
+myApp.config(['$routeProvider', function ($routeProvider) {
+    $routeProvider.
 
+        when('/adminlogin', {
+            templateUrl: '../../public/app/views/pages/adminlogin.html',
+            controller: 'AdminController'
+        })
+
+}]);
 
 
 

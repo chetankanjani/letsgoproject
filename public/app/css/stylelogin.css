@@ -122,7 +122,7 @@ table {
 
 body {
 	font-family: sans-serif;
-	background-image:url("../../public/images/visit-delhi.jpg");
+	background-image:url("../../public/app/images/visit-delhi.jpg");
 	background-color: #323B55;
 	background-image: -webkit-linear-gradient(bottom, #323B55 0%, #424F71 100%);
 	background-image: -moz-linear-gradient(bottom, #323B55 0%, #424F71 100%);
