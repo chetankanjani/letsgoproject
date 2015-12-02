@@ -1,7 +1,9 @@
 var myApp = angular.module('myApp', [
     'ngRoute',
     'ngStorage',
-    'userController'
+    'userController',
+    'ngFacebook'
+
 ]);
 
 myApp.config(['$routeProvider', function ($routeProvider) {
@@ -13,17 +15,32 @@ myApp.config(['$routeProvider', function ($routeProvider) {
 
 
 }]);
+myApp.config(['$routeProvider','$facebookProvider', function ($routeProvider,$facebookProvider) {
 
+    $facebookProvider.setAppId('1244317075594321');
 
-myApp.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.
 
         when('/login', {
             templateUrl: '../../public/app/views/pages/login.html',
-            controller: 'LoginController'
+            //controller: 'LoginController'
         })
 
+
 }]);
+
+myApp.run(function(){
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+});
+
+
 
 myApp.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.

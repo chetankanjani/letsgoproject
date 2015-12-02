@@ -31,7 +31,7 @@
 
 
 
-<div class="login">
+<div class="login" ng-controller="LoginController">
 
 
     <!--<input type="button" value="Submit" onsubmit="redirectlocallogin()">-->
@@ -43,7 +43,7 @@
     <h8>
         <a href="#/locallogin" class="btn btn-default">	 Login</a><br>
         <a href="#/signup" class="btn btn-default">Signup</a><br>
-        <a href="/api/auth/facebook" class="btn btn-default"><span class="fa fa-facebook"></span> Facebook</a><br>
+        <a href="" ng-click="fblogin()" class="btn btn-default"><span class="fa fa-facebook"></span> Facebook</a><br>
         <a href="#/adminlogin" class="btn btn-default"> Admin Login</a>
     </h8>
 </div>

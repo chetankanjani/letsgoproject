@@ -12,14 +12,37 @@ userController.controller("HomeController", ['$scope', '$http', '$localStorage',
 
 
 }]);
-userController.controller("AddEventController", ['$scope', '$http', '$localStorage', function ($scope, $http, $localStorage) {
+userController.controller("LoginController", ['$scope', '$http', '$localStorage','$facebook', function ($scope, $http, $localStorage,$facebook) {
+
+
+$scope.fblogin=function(){
+
+    console.log('inside loogin ');
+
+
+    $facebook.login().then(
+
+        function(res){
+
+           console.log(res);
+            if (res.status === "connected") {
+               $facebook.api('/me').then(function(res) {
+                   console.log(res);
+               })
+            }
+        }
+    );
 
 
 
 
 
+}
 
-}])
+
+
+
+}]);
 
 userController.controller("ProfileController", ['$scope', '$http', '$localStorage','$location', function ($scope, $http, $localStorage,$location) {
 
@@ -61,16 +84,6 @@ userController.controller("ProfileController", ['$scope', '$http', '$localStorag
 userController.controller("EventController", ['$scope', '$rootScope', '$location', '$http', '$localStorage', function ($scope, $rootScope, $location, $http, $localStorage) {
 
     // $location.path('/singleevent');
-
-    $scope.addtofav = function () {
-
-
-
-
-
-
-
-    }
 
 
     $scope.postcomment = function () {
@@ -176,7 +189,7 @@ userController.controller("EventController", ['$scope', '$rootScope', '$location
 
 
 
-    }]);
+}]);
 
 
 userController.controller("MainHomeController", ['$scope', '$rootScope', '$location', '$http', '$localStorage', function ($scope, $rootScope, $location, $http, $localStorage) {
