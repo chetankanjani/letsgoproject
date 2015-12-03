@@ -96,7 +96,7 @@ a.simpleCart_empty {
   float: left;
 }
 .banner {
-	background:url("../images/banner_img.jpg") no-repeat 0px 0px;
+	background:url("../../../public/app/images/banner_img.jpg") no-repeat 0px 0px;
 	background-size:cover;
 	-moz-background-size:cover;
 	-o-background-size:cover;
@@ -493,7 +493,7 @@ a.twitter:hover,a.facebook:hover {
 a.facebook {
 	width: 25px;
 	height: 25px;
-	background: url(../images/follow.png) no-repeat -25px 0px;
+	background: url(../../../public/app/images/follow.png) no-repeat -25px 0px;
 	display: inline-block;
 	  vertical-align: text-bottom;
 }
@@ -598,6 +598,17 @@ a.product_name {
 .product-left:hover .product p i{
 	background: url(../images/cart-2.png) no-repeat;
 }
+#boxx{
+	width:1000px;
+    float:left;
+    padding:0px;
+	background-color: #966;
+}
+p.one {
+    border-style: solid;
+    border-width: 5px;
+	border-color: #CC3;
+}
 /*--end-product--*/
 h3.like{
     font-size: 30px;
@@ -670,11 +681,11 @@ a.like_name {
 }
 .nbs-flexisel-nav-left {
 	left: 0px;
-	background: url(../images/arrows.png) no-repeat -8px -7px;
+    background: url(../images/arrows.png) no-repeat -8px -7px;
 }
 .nbs-flexisel-nav-right {
 	right: 0px;
-	background: url(../images/arrows.png) no-repeat -61px -7px;
+    background: url(../images/arrows.png) no-repeat -61px -7px;
 }
 .other-products {
     padding: 60px 0;
@@ -945,7 +956,7 @@ ul.ratings li a{
 	font-weight: 600;
 }
 i.rating-ed{
-	background: url(../images/stars.png)no-repeat -9px;
+	background: url(../../../public/app/images/stars.png)no-repeat -9px;
 }
 .price_single {
 	font-size: 1.3em;
@@ -1063,7 +1074,7 @@ p.title {
 }
 p.title {
 	color: #000;
-	font-size: 14px;
+	font-size: 0.95em;
 	font-weight: 700;
 	margin:0;
 }
@@ -1281,7 +1292,7 @@ ul.ratings li a{
 	font-weight: 600;
 }
 i.rating-ed{
-	background: url(../images/stars.png)no-repeat -9px;
+	background: url(../../../public/app/images/stars.png)no-repeat -9px;
 }
 .price_single {
 	font-size: 1.3em;
@@ -1370,12 +1381,17 @@ h3.new-models {
 }
 p.title {
 	color: #000;
-	font-size: 14px;
+	font-size: 0.95em;
 	font-weight: bold;
 }
 .cart-left {
+	position:absolute;
 	float: left;
 	margin-right: 2.6%;
+	left: 73px;
+	top: 294px;
+	width: 98px;
+	height: 28px;
 }
 p.title {
 	color: #000;
@@ -1389,7 +1405,7 @@ p.title {
 	font-size: 0.95em;
 }
 .product_container {
-	padding: 2em;
+	padding: 1em;
 	border-top: 10px solid #f8f8f8;
 }
 .products-page {

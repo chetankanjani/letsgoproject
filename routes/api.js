@@ -357,7 +357,7 @@ module.exports = function (app, express, passport) {
 
             var ascending = false;//change to false for descending
             events.sort(function (a, b) {
-                return (a.rating - b.rating) * (ascending ? 1 : -1);
+                return (a.rating.value - b.rating.value) * (ascending ? 1 : -1);
             });//"message": "'$push' is empty. You must specify a field like so: {$push: {<field>: ...}}",
 
             var array=[];
@@ -597,17 +597,17 @@ module.exports = function (app, express, passport) {
                         var count = events.rating.count;
                         count = count + 1;
                         var value = events.rating.value;
-                        console.log(value);
-                        console.log(count);
-                        console.log(uservalue);
+                        //console.log(value);
+                        //console.log(count);
+                        //console.log(uservalue);
                         value = (value * (count - 1));
                         var u=+uservalue;
                         value=value+u;
                         value/=count;
                         events.rating.value = value;
                         events.rating.count = count;
-                        console.log(value);
-                        console.log(count);
+                        //console.log(value);
+                        //console.log(count);
                         Event.findOneAndUpdate(
                             {'_id': eventid},
                             {$set: {
@@ -621,7 +621,7 @@ module.exports = function (app, express, passport) {
                                 }
                                 else {
                                     //res.json({success:true});
-                                    console.log(event);
+                                   // console.log(event);
                                 }
                             });
                     }
@@ -762,10 +762,10 @@ module.exports = function (app, express, passport) {
     //
     //});
 
-    api.get('/getratedetails',function(req,res) {
+    api.post('/getratedetails',function(req,res) {
 
-        var eventid=req.param.eventid;
-        var userid=req.param.userid;
+        var eventid=req.body.eventid;
+        var userid=req.body.userid;
 
 
         Event.findOne({'_id': eventid,'rating.userrating.userid':userid}, function (err, events) {
@@ -776,13 +776,19 @@ module.exports = function (app, express, passport) {
             else {
                 //    rating.userrating.userid':userid
                 console.log(events);
-                if(events!=null)
-                if(events.rating!=null)
-                    if(events.rating.userrating!=null)
-                        if(events.rating.userrating.uservalue!=null)
-                            res.json({success:true,'uservalue':events.rating.userrating.uservalue});
+                if(events!=null) {
+                    if (events.rating != null) {
+                        if (events.rating.userrating != null) {
+                            res.json({success: true, 'uservalue': events.rating.userrating.uservalue});
+                        }else
+                            res.json({success:false});
 
-                res.json({success:false});
+                    }else
+                    res.json({success:false});
+
+
+                }else
+                    res.json({success:false});
             }
         });
 
@@ -790,6 +796,29 @@ module.exports = function (app, express, passport) {
 
 
 
+
+    });
+
+
+    api.get('/getfbuseridweb', function (req, res) {
+
+
+        var fbid = req.param('fbid');
+
+        console.log(fbid);
+
+
+        User.findOne({'facebook.id': fbid}, function (err, user) {
+            if (err)
+                console.log(err);
+            else {
+
+                if(user!=null)
+                    res.json({userid: user._id,success:true});
+
+            }
+
+        });
 
     });
 

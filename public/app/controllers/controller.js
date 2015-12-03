@@ -12,12 +12,12 @@ userController.controller("HomeController", ['$scope', '$http', '$localStorage',
 
 
 }]);
-userController.controller("LoginController", ['$scope', '$http', '$localStorage','$facebook', function ($scope, $http, $localStorage,$facebook) {
+userController.controller("LoginController", ['$scope', '$http', '$localStorage','$facebook','$location', function ($scope, $http, $localStorage,$facebook,$location) {
 
 
 $scope.fblogin=function(){
 
-    console.log('inside loogin ');
+
 
 
     $facebook.login().then(
@@ -28,19 +28,23 @@ $scope.fblogin=function(){
             if (res.status === "connected") {
                $facebook.api('/me').then(function(res) {
                    console.log(res);
-               })
+                   $http.get("/api/getfbuseridweb", {params: {fbid: res.id}}).success(function (data) {
+
+                       console.log(data);
+
+                       $localStorage.current_userid=data.userid;
+
+
+                   });
+                   })
+
+
+                $location.path('/main');
             }
         }
     );
 
-
-
-
-
 }
-
-
-
 
 }]);
 
@@ -295,12 +299,7 @@ userController.controller("EventfeedController", ['$scope', '$rootScope', '$loca
         $localStorage.onclickeventid = data;
         $location.path('/singleevent');
 
-
     }
-
-
-
-
 
 }]);
 
