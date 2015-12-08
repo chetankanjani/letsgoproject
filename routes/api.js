@@ -191,15 +191,15 @@ module.exports = function (app, express, passport) {
                 res.json({success: true});
             });
     });
-    api.post('/removefavourites', function (req, res) {
-        // _id: req.body.id;
-        User.findByIdAndUpdate({_id: req.body.userid},
-            {favouriteid: {eventid: req.body.eventid}},
-            {upsert: true},
-            function (fav) {
-                res.json({success: true, user: fav});
-            });
-    });
+    //api.post('/removefavourites', function (req, res) {
+    //    // _id: req.body.id;
+    //    User.findByIdAndUpdate({_id: req.body.userid},
+    //        {favouriteid: {eventid: req.body.eventid}},
+    //        {upsert: true},
+    //        function (fav) {
+    //            res.json({success: true, user: fav});
+    //        });
+    //});
 
 
     api.get('/getfavourites', function (req, res) {
