@@ -606,8 +606,7 @@ module.exports = function (app, express, passport) {
                         value/=count;
                         events.rating.value = value;
                         events.rating.count = count;
-                        //console.log(value);
-                        //console.log(count);
+                        //console.log(value);                        //console.log(count);
                         Event.findOneAndUpdate(
                             {'_id': eventid},
                             {$set: {
