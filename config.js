@@ -5,7 +5,7 @@
 //};
 
 var config = {
-    'port': process.env.port || 80,
+    'port': process.env.port || 7003,
     'database':'mongodb://127.0.0.1:27017/local1',
     'superSecret':'itsasecret'
 };
